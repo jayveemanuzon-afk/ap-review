@@ -1,0 +1,8 @@
+{
+  "name": "Remix Paikot na Daloy ng Ekonomiya - Interactive Concept Map Reviewer",
+  "description": "Interactive study app to review the Circular Flow of the Economy (Paikot na Daloy ng Ekonomiya) concept map with draggable labels, mistake review hints, and auto-completion.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

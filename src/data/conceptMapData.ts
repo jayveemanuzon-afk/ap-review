@@ -1,0 +1,491 @@
+import { ConceptNode, CategoryType } from '../types';
+
+export const CONCEPT_NODES: ConceptNode[] = [
+  // ==========================================
+  // 1. PANGUNAHING SEKTOR AT PAMILIHAN (ACTORS & MARKETS)
+  // ==========================================
+  {
+    id: 'node-panlabas-sektor',
+    text: 'PANLABAS NG SEKTOR',
+    category: 'sektor-pamilihan',
+    flowType: 'actor',
+    x: 650,
+    y: 92,
+    width: 185,
+    height: 30,
+    description: 'Bansang nakikipagkalakalan sa pamamagitan ng pag-aangkat (import) at pagluluwas (export).',
+    reviewHint: 'Ito ang sektor na kumakatawan sa kalakalang panlabas at ugnayan sa ibang bansa sa pamamagitan ng import at export.',
+    detailedReview: 'Ang PANLABAS NG SEKTOR (Rest of the World / Foreign Sector) ang nagbubukas sa ekonomiya sa pandaigdigang kalakalan. Dito nagaganap ang pag-aangkat (import) ng mga kalakal at salik at pagluluwas (export) ng mga lokal na produkto at lakas-paggawa.'
+  },
+  {
+    id: 'node-pamilihan-produkto',
+    text: 'Pamilihan ng Produkto at Serbisyo',
+    category: 'sektor-pamilihan',
+    flowType: 'actor',
+    x: 650,
+    y: 268,
+    width: 225,
+    height: 30,
+    description: 'Lugar kung saan ibinebenta ng bahay-kalakal ang mga tapos na produkto at serbisyo sa mga mamimili.',
+    reviewHint: 'Dito ibinebenta ang mga tapos na produkto at serbisyo na binibili ng sambahayan at pamahalaan.',
+    detailedReview: 'Ang PAMILIHAN NG PRODUKTO AT SERBISYO (Goods and Services Market) ang pamilihang nagtatagpo ang bahay-kalakal bilang nagtitinda at sambahayan/pamahalaan bilang mamimili ng mga tapos na produkto.'
+  },
+  {
+    id: 'node-pamahalaan',
+    text: 'PAMAHALAAN',
+    category: 'sektor-pamilihan',
+    flowType: 'actor',
+    x: 650,
+    y: 442,
+    width: 155,
+    height: 30,
+    description: 'Nangongolekta ng buwis at nagkakaloob ng mga pampublikong produkto, serbisyo, at transfer payments.',
+    reviewHint: 'Ito ang institusyong nangongolekta ng buwis upang pondohan ang mga pampublikong proyekto at serbisyo.',
+    detailedReview: 'Ang PAMAHALAAN (Government Sector) ang namamahala at nagpapatupad ng mga polisiya sa pambansang ekonomiya. Nangongolekta ito ng buwis mula sa sambahayan at bahay-kalakal upang makapagbigay ng pampublikong serbisyo at transfer payments.'
+  },
+  {
+    id: 'node-pamilihan-salik',
+    text: 'Pamilihan ng Salik ng Produksyon',
+    category: 'sektor-pamilihan',
+    flowType: 'actor',
+    x: 650,
+    y: 590,
+    width: 225,
+    height: 30,
+    description: 'Pamilihan kung saan ibinibenta ng sambahayan ang lupa, paggawa, kapital, at kakayahang entreprenyur.',
+    reviewHint: 'Dito ibinibenta ng sambahayan ang kanilang lupa, lakas-paggawa, at kapital para gamitin sa produksyon.',
+    detailedReview: 'Ang PAMILIHAN NG SALIK NG PRODUKSYON (Factor/Resource Market) ang pamilihan kung saan nagmumula ang mga input ng produksyon tulad ng lupa, paggawa, at kapital na binibili ng bahay-kalakal kapalit ng kita o sahod.'
+  },
+  {
+    id: 'node-pamilihang-pampinansiyal',
+    text: 'Pamilihang Pampinansiyal',
+    category: 'sektor-pamilihan',
+    flowType: 'actor',
+    x: 650,
+    y: 712,
+    width: 210,
+    height: 28,
+    description: 'Institusyon tulad ng bangko kung saan nag-iimpok ang sambahayan at humihiram ng kapital ang bahay-kalakal.',
+    reviewHint: 'Ito ang sektor tulad ng mga bangko kung saan inilalagak ang impok (savings) at kinukuha ang pamumuhunan (investment).',
+    detailedReview: 'Ang PAMILIHANG PAMPINANSIYAL (Financial Market) ang nag-uugnay sa mga nag-iimpok (savers tulad ng sambahayan) at mga namumuhunan o nangungutang (borrowers tulad ng bahay-kalakal at pamahalaan).'
+  },
+  {
+    id: 'node-bahay-kalakal',
+    text: 'BAHAY-KALAKAL',
+    category: 'sektor-pamilihan',
+    flowType: 'actor',
+    x: 145,
+    y: 432,
+    width: 155,
+    height: 30,
+    description: 'Sektor na responsable sa paglikha at produksyon ng mga produkto at serbisyo.',
+    reviewHint: 'Sektor ng negosyo o mga kompanya na gumagawa at lumilikha ng mga produkto at serbisyo.',
+    detailedReview: 'Ang BAHAY-KALAKAL (Business/Firm Sector) ang tagalikha ng mga produkto at serbisyo gamit ang mga salik ng produksyon. Sila ang nagbabayad ng sahod at upa, nagbebenta sa pamilihan ng produkto, at nagbabayad ng buwis.'
+  },
+  {
+    id: 'node-sambahayan',
+    text: 'SAMBAHAYAN',
+    category: 'sektor-pamilihan',
+    flowType: 'actor',
+    x: 1075,
+    y: 432,
+    width: 155,
+    height: 30,
+    description: 'Sektor na nagmamay-ari ng mga salik ng produksyon at pangunahing konsyumer ng mga produkto at serbisyo.',
+    reviewHint: 'Sektor ng pamilya o indibidwal na nagmamay-ari ng mga salik ng produksyon at komukonsumo ng mga produkto.',
+    detailedReview: 'Ang SAMBAHAYAN (Household Sector) ang may-ari ng mga salik ng produksyon (lupa, paggawa, kapital) at siya ring pangunahing mamimili ng mga tapos na produkto para sa personal na pagkonsumo.'
+  },
+
+  // ==========================================
+  // 2. KALAKALANG PANLABAS (BAHAY-KALAKAL <-> PANLABAS)
+  // ==========================================
+  {
+    id: 'node-left-import-prod',
+    text: 'Pag-angkat para sa Produksyon',
+    category: 'panlabas-kalakalan',
+    flowType: 'flow',
+    x: 230,
+    y: 35,
+    width: 200,
+    height: 26,
+    directionFrom: 'Panlabas ng Sektor',
+    directionTo: 'Bahay-Kalakal',
+    description: 'Pagbili ng bahay-kalakal ng mga hilaw na materyales o makinarya mula sa ibang bansa.',
+    reviewHint: 'Tawag sa pagbili ng mga kagamitan o hilaw na sangkap mula sa ibang bansa upang gamitin sa paggawa ng produkto.',
+    detailedReview: 'Ang PAG-ANGKAT PARA SA PRODUKSYON (Import for Production) ay ang pagpasok ng mga dayuhang kagamitan, hilaw na materyales, o teknolohiya na kailangan ng Bahay-Kalakal upang makagawa ng mga produkto.'
+  },
+  {
+    id: 'node-left-kita-1',
+    text: 'Kita',
+    category: 'daloy-salapi',
+    flowType: 'flow',
+    x: 130,
+    y: 70,
+    width: 65,
+    height: 24,
+    directionFrom: 'Bahay-Kalakal',
+    directionTo: 'Panlabas ng Sektor',
+    description: 'Kabuuang kabayaran na lumalabas o pumapasok kaugnay ng kalakalang panlabas ng bahay-kalakal.',
+    reviewHint: 'Salapi o kabayaran na dumadaloy kaugnay ng transaksyon sa dayuhang sektor.',
+    detailedReview: 'Ang KITA (Income / Outflow/Inflow) sa panlabas na sektor ay ang daloy ng salapi para sa pagbabayad o pagtanggap ng bayad sa pakikipagkalakalan.'
+  },
+  {
+    id: 'node-left-kita-2',
+    text: 'Kita',
+    category: 'daloy-salapi',
+    flowType: 'flow',
+    x: 130,
+    y: 105,
+    width: 65,
+    height: 24,
+    directionFrom: 'Panlabas ng Sektor',
+    directionTo: 'Bahay-Kalakal',
+    description: 'Salaping pumapasok sa bahay-kalakal mula sa dayuhang bansa bilang kabayaran sa iniluwas na produkto.',
+    reviewHint: 'Salaping kinikita ng bahay-kalakal mula sa pagluluwas ng mga produkto sa ibang bansa.',
+    detailedReview: 'Ang KITA mula sa pagluluwas ay ang perang pumapasok sa pambansang ekonomiya kapag binibili ng mga dayuhan ang ating mga tapos na kalakal.'
+  },
+  {
+    id: 'node-left-pagluwas-tapos',
+    text: 'Pagluwas ng tapos na produkto o serbisyo',
+    category: 'panlabas-kalakalan',
+    flowType: 'flow',
+    x: 275,
+    y: 140,
+    width: 250,
+    height: 26,
+    directionFrom: 'Bahay-Kalakal',
+    directionTo: 'Panlabas ng Sektor',
+    description: 'Pagbebenta ng mga produktong gawa sa Pilipinas patungo sa dayuhang pamilihan (Export).',
+    reviewHint: 'Pagpapadala at pagbebenta ng mga yaring kalakal patungo sa mga mamimili sa ibang bansa.',
+    detailedReview: 'Ang PAGLUWAS NG TAPOS NA PRODUKTO O SERBISYO (Export of Finished Goods/Services) ay ang pagbebenta ng lokal na produkto sa ibang bansa na nagdudulot ng karagdagang kita sa bahay-kalakal.'
+  },
+  {
+    id: 'node-left-kita-goods',
+    text: 'Kita',
+    category: 'daloy-salapi',
+    flowType: 'flow',
+    x: 195,
+    y: 205,
+    width: 65,
+    height: 24,
+    directionFrom: 'Pamilihan ng Produkto',
+    directionTo: 'Bahay-Kalakal',
+    description: 'Perang natatanggap ng bahay-kalakal mula sa pagbenta ng mga produkto sa pamilihan.',
+    reviewHint: 'Perang natatanggap ng Bahay-Kalakal kapalit ng kanilang ibinentang produkto.',
+    detailedReview: 'Ang KITA (Revenue) ng Bahay-Kalakal ay nagmumula sa paggasta ng mga mamimili sa Pamilihan ng Produkto at Serbisyo.'
+  },
+
+  // ==========================================
+  // 3. PAMILIHAN NG PRODUKTO AT SERBISYO FLOWS
+  // ==========================================
+  {
+    id: 'node-pagbenta-produkto',
+    text: 'Pagbenta ng produkto o serbisyo',
+    category: 'daloy-produkto-salik',
+    flowType: 'flow',
+    x: 360,
+    y: 228,
+    width: 200,
+    height: 26,
+    directionFrom: 'Bahay-Kalakal',
+    directionTo: 'Pamilihan ng Produkto',
+    description: 'Pagdadala at pag-aalok ng mga tapos na kalakal ng bahay-kalakal sa pamilihan.',
+    reviewHint: 'Aksyon ng Bahay-Kalakal sa pagdadala ng kanilang mga nagawang kalakal sa pamilihan.',
+    detailedReview: 'Ang PAGBENTA NG PRODUKTO O SERBISYO ay ang daloy ng yaring kalakal mula sa Bahay-Kalakal patungo sa Pamilihan ng Produkto upang mabili ng mga mamimili.'
+  },
+  {
+    id: 'node-gastusin-pagkonsumo',
+    text: 'Gastusin sa Pagkonsumo',
+    category: 'daloy-salapi',
+    flowType: 'flow',
+    x: 960,
+    y: 185,
+    width: 175,
+    height: 26,
+    directionFrom: 'Sambahayan',
+    directionTo: 'Pamilihan ng Produkto',
+    description: 'Pera o halagang ginugugol ng sambahayan upang makabili ng kanilang pangangailangan (Consumption Expenditure).',
+    reviewHint: 'Ang salaping ginagastos ng Sambahayan upang mabili ang kanilang mga pang-araw-araw na pangangailangan.',
+    detailedReview: 'Ang GASTUSIN SA PAGKONSUMO (Consumption Expenditure / C) ay ang pera na ibinabayad ng sambahayan sa Pamilihan ng Produkto at Serbisyo upang matugunan ang kanilang mga kagustuhan at pangangailangan.'
+  },
+  {
+    id: 'node-pagbili-produkto',
+    text: 'Pagbili ng produkto o serbisyo',
+    category: 'daloy-produkto-salik',
+    flowType: 'flow',
+    x: 910,
+    y: 240,
+    width: 190,
+    height: 26,
+    directionFrom: 'Pamilihan ng Produkto',
+    directionTo: 'Sambahayan',
+    description: 'Pagtanggap o pagkuha ng sambahayan sa mga produkto at serbisyo mula sa pamilihan.',
+    reviewHint: 'Aksyon ng Sambahayan sa pagkuha ng mga produkto mula sa pamilihan.',
+    detailedReview: 'Ang PAGBILI NG PRODUKTO O SERBISYO ay ang pisikal na daloy ng mga yaring kalakal mula sa Pamilihan patungo sa Sambahayan.'
+  },
+
+  // ==========================================
+  // 4. PAMAHALAAN FLOWS (BUWIS AT SERBISYONG PAMPUBLIKO)
+  // ==========================================
+  {
+    id: 'node-left-public-goods',
+    text: 'Pampublikong produkto o serbisyo, transfer payments',
+    category: 'pamahalaan-buwis',
+    flowType: 'flow',
+    x: 375,
+    y: 388,
+    width: 235,
+    height: 28,
+    directionFrom: 'Pamahalaan',
+    directionTo: 'Bahay-Kalakal',
+    description: 'Mga tulong tulad ng subsidies, kalsada, at proteksyon na ibinibigay ng pamahalaan sa mga negosyo.',
+    reviewHint: 'Ibinibigay ng Pamahalaan sa Bahay-Kalakal kapalit ng buwis (tulad ng imprastraktura, subsidiya, at proteksyon).',
+    detailedReview: 'Ang PAMPUBLIKONG PRODUKTO O SERBISYO, TRANSFER PAYMENTS para sa negosyo ay kinabibilangan ng mga kalsada, tulay, kapayapaan, at mga tulong pinansyal (subsidies) mula sa gobyerno.'
+  },
+  {
+    id: 'node-left-buwis',
+    text: 'Buwis',
+    category: 'pamahalaan-buwis',
+    flowType: 'flow',
+    x: 375,
+    y: 440,
+    width: 75,
+    height: 24,
+    directionFrom: 'Bahay-Kalakal',
+    directionTo: 'Pamahalaan',
+    description: 'Sapilitang kontribusyon na ibinabayad ng bahay-kalakal sa pamahalaan (Corporate/Business Tax).',
+    reviewHint: 'Sapilitang bayarin ng Bahay-Kalakal sa pamahalaan mula sa kanilang kita.',
+    detailedReview: 'Ang BUWIS (Taxes / T) mula sa Bahay-Kalakal ay ang kontribusyon sa gobyerno mula sa kinita ng negosyo (corporate income tax, VAT, business permits).'
+  },
+  {
+    id: 'node-right-public-goods',
+    text: 'Pampublikong produkto o serbisyo, transfer payments',
+    category: 'pamahalaan-buwis',
+    flowType: 'flow',
+    x: 890,
+    y: 388,
+    width: 235,
+    height: 28,
+    directionFrom: 'Pamahalaan',
+    directionTo: 'Sambahayan',
+    description: 'Serbisyo tulad ng libreng edukasyon, kalusugan, 4Ps, at pensyon na ibinibigay ng gobyerno sa mamamayan.',
+    reviewHint: 'Ipinagkakaloob ng gobyerno sa mga mamamayan (tulad ng 4Ps, libreng gamot, at mga pampublikong pasilidad).',
+    detailedReview: 'Ang PAMPUBLIKONG PRODUKTO O SERBISYO, TRANSFER PAYMENTS para sa sambahayan ay ang mga ayuda tulad ng Pantawid Pamilyang Pilipino Program (4Ps), libreng pampublikong paaralan, at pampublikong ospital.'
+  },
+  {
+    id: 'node-right-buwis',
+    text: 'Buwis',
+    category: 'pamahalaan-buwis',
+    flowType: 'flow',
+    x: 890,
+    y: 440,
+    width: 75,
+    height: 24,
+    directionFrom: 'Sambahayan',
+    directionTo: 'Pamahalaan',
+    description: 'Sapilitang kontribusyon ng mga mamamayan sa pamahalaan (Income tax, withholding tax).',
+    reviewHint: 'Sapilitang bayarin ng mamamayan o sambahayan mula sa kanilang sahod o kita.',
+    detailedReview: 'Ang BUWIS mula sa Sambahayan ay ang indibidwal na buwis sa kita (income tax) at buwis sa mga binibiling produkto na ginagamit ng pamahalaan upang magserbisyo sa bayan.'
+  },
+
+  // ==========================================
+  // 5. PAMILIHAN NG SALIK NG PRODUKSYON FLOWS
+  // ==========================================
+  {
+    id: 'node-input-produksyon',
+    text: 'Input para sa produksyon',
+    category: 'daloy-produkto-salik',
+    flowType: 'flow',
+    x: 370,
+    y: 510,
+    width: 185,
+    height: 26,
+    directionFrom: 'Pamilihan ng Salik',
+    directionTo: 'Bahay-Kalakal',
+    description: 'Mga salik (manggagawa, hilaw na materyales) na ginagamit ng negosyo sa paggawa ng produkto.',
+    reviewHint: 'Mga sangkap at salik na kinukuha ng Bahay-Kalakal mula sa pamilihan upang magamit sa paggawa ng kalakal.',
+    detailedReview: 'Ang INPUT PARA SA PRODUKSYON ay ang daloy ng mga salik (lupa, paggawa, kapital) na ipinapasok sa proseso ng paglikha ng mga kalakal ng bahay-kalakal.'
+  },
+  {
+    id: 'node-gastusin-produksyon',
+    text: 'Gastusin sa Produksyon',
+    category: 'daloy-salapi',
+    flowType: 'flow',
+    x: 325,
+    y: 555,
+    width: 185,
+    height: 26,
+    directionFrom: 'Bahay-Kalakal',
+    directionTo: 'Pamilihan ng Salik',
+    description: 'Kabayaran ng bahay-kalakal para sa mga salik (sahod, upa, interes, tubo).',
+    reviewHint: 'Kabayaran ng Bahay-Kalakal para sa paggamit ng mga salik ng produksyon (sahod, upa, interes).',
+    detailedReview: 'Ang GASTUSIN SA PRODUKSYON (Cost of Production) ay ang salaping ibinabayad ng bahay-kalakal upang bayaran ang mga salik tulad ng suweldo ng empleyado at upa sa gusali.'
+  },
+  {
+    id: 'node-paggawa-lupa-kapital',
+    text: 'Paggawa, Lupa at Kapital',
+    category: 'daloy-produkto-salik',
+    flowType: 'flow',
+    x: 920,
+    y: 510,
+    width: 185,
+    height: 26,
+    directionFrom: 'Sambahayan',
+    directionTo: 'Pamilihan ng Salik',
+    description: 'Mga pangunahing salik ng produksyon na pagmamay-ari at ipinagkakaloob ng sambahayan.',
+    reviewHint: 'Ang mga pangunahing salik ng produksyon na nagmumula sa sambahayan patungo sa pamilihan ng salik.',
+    detailedReview: 'Ang PAGGAWA, LUPA AT KAPITAL (Factors of Production) ang mga pangunahing pag-aari ng Sambahayan na ibinibigay sa pamilihan upang magamit sa paglikha ng produkto.'
+  },
+  {
+    id: 'node-right-kita-salik',
+    text: 'Kita',
+    category: 'daloy-salapi',
+    flowType: 'flow',
+    x: 980,
+    y: 555,
+    width: 65,
+    height: 24,
+    directionFrom: 'Pamilihan ng Salik',
+    directionTo: 'Sambahayan',
+    description: 'Sahod, upa, interes, at tubo na tinatanggap ng sambahayan kapalit ng kanilang mga salik ng produksyon.',
+    reviewHint: 'Kabayaran o sahod na natatanggap ng Sambahayan mula sa kanilang pagtatrabaho at pagpapaupa.',
+    detailedReview: 'Ang KITA (Income / Y) na tinatanggap ng Sambahayan ay binubuo ng sahod (wages), upa (rent), interes (interest), at tubo (profit) mula sa pagkakaloob ng mga salik ng produksyon.'
+  },
+
+  // ==========================================
+  // 6. PAMILIHANG PAMPINANSIYAL FLOWS
+  // ==========================================
+  {
+    id: 'node-left-pag-iimpok',
+    text: 'Pag-iimpok',
+    category: 'daloy-salapi',
+    flowType: 'flow',
+    x: 230,
+    y: 630,
+    width: 95,
+    height: 24,
+    directionFrom: 'Bahay-Kalakal',
+    directionTo: 'Pamilihang Pampinansiyal',
+    description: 'Bahagi ng kita ng bahay-kalakal na itinatabi at inilalagak sa bangko (Corporate Savings).',
+    reviewHint: 'Pagtatabi ng pondo o salapi ng Bahay-Kalakal sa bangko.',
+    detailedReview: 'Ang PAG-IIMPOK (Savings / S) ng Bahay-Kalakal ay ang pagtatabi ng pondo sa institusyong pampinansiyal para sa darating na pangangailangan o reserba.'
+  },
+  {
+    id: 'node-pamumuhunan',
+    text: 'Pamumuhunan',
+    category: 'daloy-salapi',
+    flowType: 'flow',
+    x: 230,
+    y: 675,
+    width: 110,
+    height: 24,
+    directionFrom: 'Pamilihang Pampinansiyal',
+    directionTo: 'Bahay-Kalakal',
+    description: 'Panghihiram ng bahay-kalakal ng pondo sa bangko para bumili ng makinarya o magtayo ng pabrika (Investment).',
+    reviewHint: 'Panghihiram ng pondo sa bangko ng Bahay-Kalakal upang magpalawak ng negosyo o makinarya.',
+    detailedReview: 'Ang PAMUMUHUNAN (Investment / I) ay ang paggamit ng naimpok na pondo upang manghiram at bumili ng mga kagamitang pang-produksyon upang palaguin ang negosyo.'
+  },
+  {
+    id: 'node-right-pag-iimpok',
+    text: 'Pag-iimpok',
+    category: 'daloy-salapi',
+    flowType: 'flow',
+    x: 1040,
+    y: 630,
+    width: 95,
+    height: 24,
+    directionFrom: 'Sambahayan',
+    directionTo: 'Pamilihang Pampinansiyal',
+    description: 'Bahagi ng kita ng sambahayan na hindi ginagastos at inilalagak sa bangko (Household Savings).',
+    reviewHint: 'Pera ng Sambahayan na hindi ginastos at inilagak sa bangko para sa kinabukasan.',
+    detailedReview: 'Ang PAG-IIMPOK (Savings / S) ng Sambahayan ay ang pagtatabi ng bahagi ng kita (Y - C) sa mga bangko. Ito ay itinuturing na palabas na daloy (outflow/leakage) sa simpleng paikot na daloy.'
+  },
+  {
+    id: 'node-pangungutang',
+    text: 'Pangungutang',
+    category: 'daloy-salapi',
+    flowType: 'flow',
+    x: 1040,
+    y: 675,
+    width: 115,
+    height: 24,
+    directionFrom: 'Pamilihang Pampinansiyal',
+    directionTo: 'Sambahayan',
+    description: 'Panghihiram ng pondo ng sambahayan mula sa institusyong pampinansiyal (Loans/Credit).',
+    reviewHint: 'Panghihiram ng pondo o loan ng Sambahayan mula sa bangko.',
+    detailedReview: 'Ang PANGUNGUTANG (Borrowing/Loans) ay ang pagkuha ng pondo mula sa institusyong pampinansiyal upang magamit sa pagkonsumo o iba pang pangangailangan.'
+  },
+
+  // ==========================================
+  // 7. KALAKALANG PANLABAS (SAMBAHAYAN <-> PANLABAS)
+  // ==========================================
+  {
+    id: 'node-right-import-konsumo',
+    text: 'Pag-angkat para sa Pagkonsumo',
+    category: 'panlabas-kalakalan',
+    flowType: 'flow',
+    x: 1020,
+    y: 35,
+    width: 205,
+    height: 26,
+    directionFrom: 'Panlabas ng Sektor',
+    directionTo: 'Sambahayan',
+    description: 'Pagbili ng mamamayan ng mga imported na produktong pangkonsumo tulad ng mansanas o mga gamit.',
+    reviewHint: 'Pagbili ng sambahayan ng mga imported na produkto mula sa ibang bansa para sa sariling gamit.',
+    detailedReview: 'Ang PAG-ANGKAT PARA SA PAGKONSUMO (Import for Consumption) ay ang pagbili ng mga mamamayan ng mga dayuhang kalakal tulad ng imported electronics, pagkain, at damit.'
+  },
+  {
+    id: 'node-right-kita-1',
+    text: 'Kita',
+    category: 'daloy-salapi',
+    flowType: 'flow',
+    x: 1140,
+    y: 70,
+    width: 65,
+    height: 24,
+    directionFrom: 'Sambahayan',
+    directionTo: 'Panlabas ng Sektor',
+    description: 'Pera o bayad na lumalabas mula sa sambahayan patungo sa ibang bansa para sa biniling imported goods.',
+    reviewHint: 'Salaping ibinabayad ng sambahayan sa ibang bansa para sa biniling dayuhang produkto.',
+    detailedReview: 'Ang KITA / Bayad sa dayuhang sektor ay ang perang lumalabas sa ating bansa bilang bayad sa mga inangkat na produkto.'
+  },
+  {
+    id: 'node-pagluwas-salik',
+    text: 'Pagluwas ng Salik sa Produksyon',
+    category: 'panlabas-kalakalan',
+    flowType: 'flow',
+    x: 990,
+    y: 105,
+    width: 220,
+    height: 26,
+    directionFrom: 'Sambahayan',
+    directionTo: 'Panlabas ng Sektor',
+    description: 'Pagpapadala ng manggagawang Pilipino (OFWs) o kapital sa ibang bansa (Export of Factors).',
+    reviewHint: 'Pangingibang-bansa ng mga manggagawa (OFW) upang magtrabaho sa ibang bansa.',
+    detailedReview: 'Ang PAGLUWAS NG SALIK SA PRODUKSYON ay ang pangingibang-bansa ng mga Overseas Filipino Workers (OFWs) at iba pang salik upang maglingkod sa dayuhang ekonomiya.'
+  },
+  {
+    id: 'node-right-kita-2',
+    text: 'Kita',
+    category: 'daloy-salapi',
+    flowType: 'flow',
+    x: 1110,
+    y: 140,
+    width: 65,
+    height: 24,
+    directionFrom: 'Panlabas ng Sektor',
+    directionTo: 'Sambahayan',
+    description: 'Remittances o perang ipinapadala ng mga OFWs pabalik sa kanilang pamilya sa Pilipinas.',
+    reviewHint: 'Perang remittance na ipinapadala ng mga OFW pabalik sa kanilang pamilya sa Pilipinas.',
+    detailedReview: 'Ang KITA (Remittances) mula sa pagluwas ng salik ay ang perang ipinapadala ng mga migrant workers (OFWs) pabalik sa sambahayan sa Pilipinas.'
+  }
+];
+
+export const CATEGORIES: { id: CategoryType; label: string; color: string }[] = [
+  { id: 'lahat', label: 'Lahat ng Konsepto', color: 'bg-stone-100 text-stone-800' },
+  { id: 'sektor-pamilihan', label: 'Sektor at Pamilihan', color: 'bg-blue-100 text-blue-800' },
+  { id: 'daloy-salapi', label: 'Daloy ng Salapi at Kita', color: 'bg-emerald-100 text-emerald-800' },
+  { id: 'daloy-produkto-salik', label: 'Produkto at Salik', color: 'bg-amber-100 text-amber-800' },
+  { id: 'pamahalaan-buwis', label: 'Pamahalaan at Buwis', color: 'bg-purple-100 text-purple-800' },
+  { id: 'panlabas-kalakalan', label: 'Panlabas na Kalakalan', color: 'bg-rose-100 text-rose-800' },
+];
